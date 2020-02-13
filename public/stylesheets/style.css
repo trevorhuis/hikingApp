@@ -1,0 +1,200 @@
+body {
+  background-image: url("../mountain-background.jpg");
+  background-size: cover;
+  background-position: top;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 100px 600px;
+  grid-template-columns: 700px 400px;
+  justify-content: center;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.data-input, .hike-container, .weather-container {
+  margin: 10px;
+  border-radius: 16px;
+}
+
+.data-input {
+  font-family: "Sriracha", cursive;
+  color: #f9f8fd;
+  display: flex;
+  grid-column: span 2;
+  grid-row: 1;
+  background-color: #1873AA;
+}
+
+.city-input {
+  margin: 20px;
+  align-self: center;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.site-title {
+  align-self: center;
+  margin: 20px;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+.hike-container {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: #f9f8fd;
+  padding: 10px;
+}
+
+.hike-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  height: 98%;
+}
+.hike-data h1 {
+  color: #002E6C;
+  font-family: "Sriracha", cursive;
+  margin-bottom: 20px;
+}
+.hike-data .trail-title {
+  text-align: left;
+  width: 90%;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #002E6C;
+}
+.hike-data .trail-title a {
+  color: #002E6C;
+}
+.hike-data .trail {
+  display: grid;
+  background-color: #1873AA;
+  color: #f9f8fd;
+  width: 90%;
+  margin: 5px;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  border-radius: 10px;
+  padding: 5px;
+  font-family: "Lato", sans-serif;
+}
+.hike-data .trail div {
+  margin: 5px;
+}
+.hike-data .trail .trail-image {
+  grid-row: 1/span 4;
+  grid-column: 1;
+  width: 250px;
+  height: 175px;
+  display: flex;
+  justify-content: center;
+}
+.hike-data .trail .trail-image img {
+  max-width: 250px;
+  max-height: 175px;
+  align-self: center;
+}
+.hike-data .trail .trail-stars {
+  grid-row: 1;
+  grid-column: 2;
+}
+.hike-data .trail .trail-length {
+  grid-row: 2;
+  grid-column: 2;
+}
+.hike-data .trail .trail-summary {
+  grid-row: 4;
+  grid-column: 2;
+}
+.hike-data .trail .difficulty {
+  grid-row: 3;
+}
+
+.hike-data::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+  border-radius: 16px;
+}
+
+.hike-data::-webkit-scrollbar {
+  width: 14px;
+  background-color: #F5F5F5;
+  border-radius: 16px;
+}
+
+.hike-data::-webkit-scrollbar-thumb {
+  background-color: #1873AA;
+  border-radius: 16px;
+}
+
+.weather-container {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 10px;
+  background-color: #f9f8fd;
+}
+.weather-container .weather-data {
+  height: 98%;
+  text-align: center;
+  overflow: auto;
+}
+.weather-container .weather-data h1 {
+  color: #002E6C;
+  font-family: "Sriracha", cursive;
+  margin-bottom: 20px;
+}
+.weather-container button.button-dropdown {
+  width: 90%;
+  padding: 0px;
+  margin: 3px;
+  border-radius: 10px;
+}
+.weather-container .btn {
+  outline: none;
+}
+.weather-container .dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #1873AA;
+  border-radius: 10px;
+  color: #f9f8fd;
+  padding: 0px;
+}
+.weather-container .dropdown .temperature {
+  margin-right: auto;
+}
+.weather-container .dropdown div {
+  margin: 5px;
+  display: inline;
+}
+.weather-container .dropdown .dropdown-icon {
+  margin-right: 10px;
+}
+.weather-container .weather-data::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+  border-radius: 16px;
+}
+.weather-container .weather-data::-webkit-scrollbar {
+  width: 14px;
+  background-color: #F5F5F5;
+  border-radius: 16px;
+}
+.weather-container .weather-data::-webkit-scrollbar-thumb {
+  background-color: #1873AA;
+  border-radius: 16px;
+}
+
+/*# sourceMappingURL=style.css.map */

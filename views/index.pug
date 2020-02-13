@@ -1,0 +1,65 @@
+extends layout.pug
+
+block content
+    // Variables
+    mixin trail(name, summary, stars, ratings, hikeURL, length, trail_num, difficulty, imgUrl)
+        .trail-title #{trail_num})  <a href=#{hikeURL}>#{name}</a>
+        .trail
+            .trail-image
+                if imgUrl === ""
+                    img(src= "https://via.placeholder.com/250x175?text=No+Picture+Available")
+                else    
+                    img(src= imgUrl)
+            .trail-stars Rating: #{stars}⭐  #{ratings} Votes
+            .trail-length  Length: #{length}
+            .trail-summary  Summary: #{summary}
+            .difficulty Difficulty: #{difficulty}
+
+    mixin weatherReport(id, day, hour, temp, weatherIcon)
+        button.button-dropdown.btn(type='button' data-toggle='collapse' data-target= "#" + id)
+            .dropdown
+                .date
+                    .weather-date #{day} 
+                    .weather-hour #{hour}
+                .weather-icon
+                    img(src="http://openweathermap.org/img/w/" + weatherIcon + ".png") 
+                .temperature #{temp}° F
+                .dropdown-icon
+                    ion-icon(name="chevron-down-outline")
+
+            .collapse(id= id aria-labelledby='headingOne' data-parent='#accordionExample')
+                .card-body
+                p
+                    | HTML stands for HyperText Markup Language. HTML is the standard markup language for describing the structure of web pages. 
+                    a(href='https://www.tutorialrepublic.com/html-tutorial/' target='_blank') Learn more.
+
+    .container
+        .data-input
+            .site-title
+                h1.section-titles Find Your Hike
+            .city-input
+                .input-group.input-group-lg
+                    input(type="text" id="city-input" class="form-control" placeholder="City")
+                    .input-group-append
+                        button(class="btn btn-secondary" type="button" id="button-enter") Enter
+        .hike-container                
+            .hike-data
+                h1.section-titles Hikes in #{city}
+                each trail, index in trails
+                    +trail(trail.name, 
+                    trail.summary,
+                    trail.stars,
+                    trail.starVotes,
+                    trail.url,
+                    trail.length,
+                    (index + 1),
+                    trail.difficulty,
+                    trail.imgSmall)
+        .weather-container
+            .weather-data 
+                h1 Weather
+                .bs-example
+                    #accordionExample.accordion
+                        +weatherReport('collapseFirst', firstForecast.date.day, firstForecast.date.hour, firstForecast.temp, firstForecast.weatherIcon)
+                        each forecast, index in forecasts
+                            +weatherReport(`collapse${index}`, forecast.date.day, forecast.date.hour, forecast.temp, forecast.weatherIcon)
