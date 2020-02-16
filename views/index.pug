@@ -14,24 +14,7 @@ block content
             .trail-length  Length: #{length}
             .trail-summary  Summary: #{summary}
             .difficulty Difficulty: #{difficulty}
-
-    mixin weatherReport(id, day, hour, temp, weatherIcon)
-        button.button-dropdown.btn(type='button' data-toggle='collapse' data-target= "#" + id)
-            .dropdown
-                .date
-                    .weather-date #{day} 
-                    .weather-hour #{hour}
-                .weather-icon
-                    img(src="http://openweathermap.org/img/w/" + weatherIcon + ".png") 
-                .temperature #{temp}° F
-                .dropdown-icon
-                    ion-icon(name="chevron-down-outline")
-
-            .collapse(id= id aria-labelledby='headingOne' data-parent='#accordionExample')
-                .card-body
-                p
-                    | HTML stands for HyperText Markup Language. HTML is the standard markup language for describing the structure of web pages. 
-                    a(href='https://www.tutorialrepublic.com/html-tutorial/' target='_blank') Learn more.
+        
 
     .container
         .data-input
@@ -57,9 +40,3 @@ block content
                     trail.imgSmall)
         .weather-container
             .weather-data 
-                h1 Weather
-                .bs-example
-                    #accordionExample.accordion
-                        +weatherReport('collapseFirst', firstForecast.date.day, firstForecast.date.hour, firstForecast.temp, firstForecast.weatherIcon)
-                        each forecast, index in forecasts
-                            +weatherReport(`collapse${index}`, forecast.date.day, forecast.date.hour, forecast.temp, forecast.weatherIcon)

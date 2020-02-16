@@ -2,72 +2,79 @@ const request = require('request-promise');
 
 let formatWeatherAPIresponseData = json => {
 
-    let forecastData = formatForecastData(json.list.slice(1, 21), json.city.timezone)
+    // let forecastData = formatForecastData(json.list.slice(1, 6), json.city.timezone)
 
-    let forecasts = forecastData[0];
-    let firstForecast = forecastData[1];
+    // let forecasts = forecastData[0];
+    // let firstForecast = forecastData[1];
 
     let weatherData = {
-        forecasts: forecasts,
-        firstForecast: firstForecast,
-        lat: json.city.coord.lat,
-        lon: json.city.coord.lon,
-        city: json.city.name
+        forecast: {
+            temp: json.main.temp,
+            temp_min: json.main.temp_min,
+            temp_max: json.main.temp_max,
+            humidity: json.main.humidity,
+            description: json.weather[0].main,
+            weatherIcon: json.weather[0].icon,
+            wind: json.wind.speed
+        },
+        lat: json.coord.lat,
+        lon: json.coord.lon,
+        city: json.name
     }
 
     return weatherData;
 }
 
-let formatForecastData = (json, timezone) => {
-    let forecasts = [];
+// let formatForecastData = (json, timezone) => {
+//     let forecasts = [];
 
-    let firstWeather = json.shift();
+//     let firstWeather = json.shift();
 
-    let firstForecast = formatIndividualForecastData(firstWeather, timezone);
+//     let firstForecast = formatIndividualForecastData(firstWeather, timezone);
 
-    for (item of json) {
-        forecasts.push(formatIndividualForecastData(item, timezone));
-    }
+//     for (item of json) {
+//         forecasts.push(formatIndividualForecastData(item, timezone));
+//     }
 
-    return [forecasts, firstForecast];
-}
+//     return [forecasts, firstForecast];
+// }
 
-let formatIndividualForecastData = (forecast, timezone) => {
+// let formatIndividualForecastData = (forecast, timezone) => {
 
-    let rain = forecast.rain ? forecast.rain["3h"] : 0.00;
-    let snow = forecast.snow ? forecast.snow["3h"] : 0.00;
+//     let rain = forecast.rain ? forecast.rain["3h"] : 0.00;
+//     let snow = forecast.snow ? forecast.snow["3h"] : 0.00;
 
-    return {
-        date: formatDate(forecast.dt + timezone),
-        temp: forecast.main.temp,
-        realFeel: forecast.main.feels_like,
-        humidity: forecast.main.humidity,
-        wind: forecast.wind.speed,
-        rain: rain,
-        snow: snow,
-        main: forecast.weather[0].main,
-        weatherIcon: forecast.weather[0].icon
-    }    
-}
+//     return {
+//         date: formatDate(forecast.dt + timezone),
+//         temp: forecast.main.temp,
+//         realFeel: forecast.main.feels_like,
+//         humidity: forecast.main.humidity,
+//         wind: forecast.wind.speed,
+//         rain: rain,
+//         snow: snow,
+//         main: forecast.weather[0].main,
+//         weatherIcon: forecast.weather[0].icon
+//     }    
+// }
 
-let formatDate = UTCtime => {
-    // Set the time adjusted for timezone
-    let date = new Date(0);
-    date.setUTCSeconds(UTCtime);
+// let formatDate = UTCtime => {
+//     // Set the time adjusted for timezone
+//     let date = new Date(0);
+//     date.setUTCSeconds(UTCtime);
 
-    let hour = date.getHours();
+//     let hour = date.getHours();
 
-    if (hour > 12) {
-        hour = `${hour - 12} PM`;
-    } else {
-        hour = `${hour} AM`;
-    }
+//     if (hour > 12) {
+//         hour = `${hour - 12} PM`;
+//     } else {
+//         hour = `${hour} AM`;
+//     }
 
-    return {
-        day: `${date.getMonth()}/${date.getDate()}`,
-        hour: hour
-    }
-}
+//     return {
+//         day: `${date.getMonth()}/${date.getDate()}`,
+//         hour: hour
+//     }
+// }
 
 
 let formatCompleteData = (weatherData, hikingData) => {
@@ -88,7 +95,7 @@ const APIcontroller = {
         return new Promise((resolve, reject) => {
             const options = {
                 method: 'GET',
-                uri: 'http://api.openweathermap.org/data/2.5/forecast',
+                uri: 'http://api.openweathermap.org/data/2.5/weather',
                 json: true,
                 qs: {
                     q: city,

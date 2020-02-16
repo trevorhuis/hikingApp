@@ -19,6 +19,11 @@ function ignoreFavicon(req, res, next) {
 
 app.use(ignoreFavicon);
 
+app.get("/", (req, res) => {
+
+    res.render('index-blank');
+});
+
 app.get("/:city", (req, res) => {
 
     APIcontroller.getWeatherData(req.params.city)
@@ -29,8 +34,7 @@ app.get("/:city", (req, res) => {
         // console.log(data);
         res.render('index', 
             {
-                firstForecast: data.firstForecast,
-                forecasts: data.forecasts,
+                forecast: data.forecast,
                 trails: data.trails,
                 city: data.city
             });
@@ -38,7 +42,6 @@ app.get("/:city", (req, res) => {
     .catch(function (err) {
         console.log(err);
     });
-
 });
 
 app.listen(port);

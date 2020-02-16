@@ -1,0 +1,30 @@
+// Form to enter data and title
+
+.data-input, .hike-container, .weather-container {
+    margin: 10px;
+    border-radius: 16px;
+}
+
+.data-input {
+    font-family: $header-font;
+    color: $off-white;
+    display: flex;
+    grid-column:span 2;
+    grid-row: 1;
+    background-color: $input-background;
+    
+}
+
+.city-input {
+    margin: 20px;
+    align-self: center;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.site-title {
+    align-self: center;
+    margin: 20px;
+    margin-right: auto;
+    font-size: 1.1rem;
+}

@@ -1,0 +1,19 @@
+extends layout.pug
+
+block content
+
+    .container
+        .data-input
+            .site-title
+                h1.section-titles Find Your Hike
+            .city-input
+                .input-group.input-group-lg
+                    input(type="text" id="city-input" class="form-control" placeholder="City")
+                    .input-group-append
+                        button(class="btn btn-secondary" type="button" id="button-enter") Enter
+        .hike-container                
+            .hike-data
+                h1.section-titles(style="text-align: center;") Put in your city to see where you can get out of the urban jungle and into the real one!
+
+        .weather-container
+            .weather-data 
