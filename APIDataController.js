@@ -79,8 +79,7 @@ let formatWeatherAPIresponseData = json => {
 
 let formatCompleteData = (weatherData, hikingData) => {
     let finalData = {
-        forecasts: weatherData.forecasts,
-        firstForecast: weatherData.firstForecast,
+        forecast: weatherData.forecast,
         lat: weatherData.lat,
         lon: weatherData.lon,
         city: weatherData.city,

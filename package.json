@@ -1,7 +1,6 @@
 {
   "name": "hikingapp",
   "version": "1.0.0",
-  "type": "module",
   "description": "App to help you find a hiking trail",
   "main": "index.js",
   "scripts": {

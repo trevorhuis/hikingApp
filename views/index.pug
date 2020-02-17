@@ -10,10 +10,12 @@ block content
                     img(src= "https://via.placeholder.com/250x175?text=No+Picture+Available")
                 else    
                     img(src= imgUrl)
-            .trail-stars Rating: #{stars}⭐  #{ratings} Votes
-            .trail-length  Length: #{length}
-            .trail-summary  Summary: #{summary}
-            .difficulty Difficulty: #{difficulty}
+            .trail-data
+                .trail-header About the Trail
+                .trail-stars Rating: #{stars}⭐  #{ratings} Votes
+                .trail-length  Length: #{length} Miles
+                .trail-summary  Summary: #{summary}
+                .difficulty Difficulty: #{difficulty}
         
 
     .container
@@ -40,3 +42,13 @@ block content
                     trail.imgSmall)
         .weather-container
             .weather-data 
+                .date-and-time  
+                .weather-icon
+                    img(src= `http://openweathermap.org/img/wn/${forecast.weatherIcon}@2x.png`)
+                .weather-temp
+                    .temp #{forecast.temp}
+                    .min Min: #{forecast.temp_min}
+                    .max Max: #{forecast.temp_max}
+                .weather-other
+                    | Humidity: #{forecast.humidity}
+                
