@@ -18,8 +18,15 @@ body {
 
 .container {
     display: grid; 
-    grid-template-rows: 100px 120px 500px;
-    grid-template-columns: 900px;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    justify-content: center;
+}
+
+.container--weather {
+    display: grid; 
+    grid-template-rows: auto;
+    grid-template-columns: auto;
     justify-content: center;
 }
 
@@ -32,7 +39,7 @@ button:focus {
 
 @import "data-input.scss";
 @import "hike-container.scss";
-@import "weather-container.scss";
+@import "pull-down-container.scss";
 
 
 

@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    height: 98%;
+    max-height: 500px;
 
     h1 {
         color: $dark-color;
@@ -24,7 +24,8 @@
     .trail-title {
         text-align: left;
         width: 90%;
-        font-size: 1.7rem;
+        height: fit-content;
+        font-size: 1.5rem;
         font-weight: 700;
         color: $dark-color;
 
@@ -35,18 +36,15 @@
 
     .trail {
         display: grid;
-        color: $off-white;
         width: 90%;
         margin: 5px;
-        grid-template-columns: auto;
+        grid-template-columns: 35% 65%;
         grid-template-rows: auto;
         border-radius: 10px;
-        padding: 5px;
         font-family: $body-font;
+        border: 1px solid gray;
+        background-color: rgba($color: #000000, $alpha: 0.15);
 
-        div {
-            margin: 5px;
-        }
 
         .trail-data {
             display: grid;
@@ -54,17 +52,20 @@
             grid-template-rows: auto;
             border-radius: 10px;
             grid-column: 2;
-            background-color: $input-background;
+            margin-left: 20px;
+
         }
         
         .trail-image {
             grid-row: 1;
             grid-column: 1;
-            width: 250px;
-            height: 175px;
+            max-width: 250px;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-self: center;
+            border-right: 1px solid gray;
+            background-color: $off-white;
 
             img {
                 max-width: 250px;
@@ -74,15 +75,10 @@
             }
         }
 
-        .trail-header {
-            grid-row: 1;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-
-        .trail-stars {
+        .trail-summary {
             grid-row: 2;
-            grid-column: 1;
+            grid-column:1;
+            font-size: 1.8rem;
         }
 
         .trail-length {
@@ -90,15 +86,15 @@
             grid-column: 1;
         }
 
-        .trail-summary {
-            grid-row: 5;
-            grid-column:1;
+        .trail-stars, .trail-length, .difficulty {
+            line-height: 1.3rem;
         }
 
-        .difficulty {
-            grid-row: 4;
-
+        .bold {
+            font-weight: 600;
         }
+
+
     }
 }
 

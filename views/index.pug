@@ -3,7 +3,7 @@ extends layout.pug
 block content
     // Variables
     mixin trail(name, summary, stars, ratings, hikeURL, length, trail_num, difficulty, imgUrl)
-        .trail-title #{trail_num})  <a href=#{hikeURL}>#{name}</a>
+        
         .trail
             .trail-image
                 if imgUrl === ""
@@ -11,12 +11,10 @@ block content
                 else    
                     img(src= imgUrl)
             .trail-data
-                .trail-header About the Trail
-                .trail-stars Rating: #{stars}⭐  #{ratings} Votes
-                .trail-length  Length: #{length} Miles
-                .trail-summary  Summary: #{summary}
-                .difficulty Difficulty: #{difficulty}
-        
+                .trail-title <a href=#{hikeURL}>#{name}</a>
+                .trail-length  Length: <span class="bold">#{length} Miles</span> &nbsp;|&nbsp; Difficulty: <span class="bold">#{difficulty}</span> &nbsp;|&nbsp; Rating: <span class="bold">#{stars}⭐ #{ratings} Votes</span>
+                .trail-summary #{summary}
+
 
     .container
         .data-input
@@ -27,6 +25,29 @@ block content
                     input(type="text" id="city-input" class="form-control" placeholder="City")
                     .input-group-append
                         button(class="btn btn-secondary" type="button" id="button-enter") Enter
+        
+        .pull-down-container
+            .weather-container
+                .weather-data 
+                    .date-and-time
+                    .weather-icon
+                        img(src= `http://openweathermap.org/img/wn/${forecast.weatherIcon}@2x.png`)
+                    .weather-temp
+                        .temp #{forecast.temp}°
+                        .min Min: #{forecast.temp_min}°
+                        .max Max: #{forecast.temp_max}°
+                    .weather-other
+                        | Humidity: #{forecast.humidity}
+            .hiking-tips Learn More About Hiking
+                .hiking-links
+                    ul
+                        li 
+                            a(href="https://www.rei.com/learn/expert-advice/hiking-for-beginners.html") Hiking 101
+                        li 
+                            a(href="https://www.nps.gov/articles/hiking-safety.htm") Safety on the Trail
+                        li 
+                            a(href="https://www.rei.com/learn/expert-advice/hiking-training.html") How to train for a Hike
+
         .hike-container                
             .hike-data
                 h1.section-titles Hikes in #{city}
@@ -40,15 +61,5 @@ block content
                     (index + 1),
                     trail.difficulty,
                     trail.imgSmall)
-        .weather-container
-            .weather-data 
-                .date-and-time  
-                .weather-icon
-                    img(src= `http://openweathermap.org/img/wn/${forecast.weatherIcon}@2x.png`)
-                .weather-temp
-                    .temp #{forecast.temp}
-                    .min Min: #{forecast.temp_min}
-                    .max Max: #{forecast.temp_max}
-                .weather-other
-                    | Humidity: #{forecast.humidity}
+        
                 

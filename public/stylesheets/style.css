@@ -8,8 +8,15 @@ body {
 
 .container {
   display: grid;
-  grid-template-rows: 100px 120px 500px;
-  grid-template-columns: 900px;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  justify-content: center;
+}
+
+.container--weather {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
   justify-content: center;
 }
 
@@ -20,7 +27,7 @@ button:focus {
   outline: none;
 }
 
-.data-input, .hike-container, .weather-container {
+.data-input, .hike-container, .weather-container, .hiking-tips {
   margin: 10px;
   border-radius: 16px;
 }
@@ -32,7 +39,7 @@ button:focus {
   grid-column: span 2;
   grid-row: 1;
   background-color: #1873AA;
-  margin-bottom: 0px;
+  z-index: 2;
 }
 
 .city-input {
@@ -61,7 +68,7 @@ button:focus {
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  height: 98%;
+  max-height: 500px;
 }
 .hike-data h1 {
   color: #002E6C;
@@ -71,7 +78,8 @@ button:focus {
 .hike-data .trail-title {
   text-align: left;
   width: 90%;
-  font-size: 1.7rem;
+  height: fit-content;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #002E6C;
 }
@@ -80,17 +88,14 @@ button:focus {
 }
 .hike-data .trail {
   display: grid;
-  color: #f9f8fd;
   width: 90%;
   margin: 5px;
-  grid-template-columns: auto;
+  grid-template-columns: 35% 65%;
   grid-template-rows: auto;
   border-radius: 10px;
-  padding: 5px;
   font-family: "Lato", sans-serif;
-}
-.hike-data .trail div {
-  margin: 5px;
+  border: 1px solid gray;
+  background-color: rgba(0, 0, 0, 0.15);
 }
 .hike-data .trail .trail-data {
   display: grid;
@@ -98,16 +103,18 @@ button:focus {
   grid-template-rows: auto;
   border-radius: 10px;
   grid-column: 2;
-  background-color: #1873AA;
+  margin-left: 20px;
 }
 .hike-data .trail .trail-image {
   grid-row: 1;
   grid-column: 1;
-  width: 250px;
-  height: 175px;
+  max-width: 250px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-self: center;
+  border-right: 1px solid gray;
+  background-color: #f9f8fd;
 }
 .hike-data .trail .trail-image img {
   max-width: 250px;
@@ -115,25 +122,20 @@ button:focus {
   align-self: center;
   border-radius: 5px;
 }
-.hike-data .trail .trail-header {
-  grid-row: 1;
-  text-align: center;
-  font-size: 1.1rem;
-}
-.hike-data .trail .trail-stars {
+.hike-data .trail .trail-summary {
   grid-row: 2;
   grid-column: 1;
+  font-size: 1.8rem;
 }
 .hike-data .trail .trail-length {
   grid-row: 3;
   grid-column: 1;
 }
-.hike-data .trail .trail-summary {
-  grid-row: 5;
-  grid-column: 1;
+.hike-data .trail .trail-stars, .hike-data .trail .trail-length, .hike-data .trail .difficulty {
+  line-height: 1.3rem;
 }
-.hike-data .trail .difficulty {
-  grid-row: 4;
+.hike-data .trail .bold {
+  font-weight: 600;
 }
 
 .hike-data::-webkit-scrollbar-track {
@@ -153,20 +155,32 @@ button:focus {
   border-radius: 16px;
 }
 
-.weather-container {
-  margin-top: 0px;
-  border-radius: -16px;
-  display: grid;
-  grid-column: 1;
+.weather-container--clear {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.pull-down-container {
+  display: flex;
   grid-row: 2;
+  grid-column: 1;
+  animation: 1.25s ease-out 0s 1 slideInFromTop;
+  z-index: 1;
+}
+
+.weather-container {
+  display: grid;
+  width: 50%;
   grid-template-columns: auto;
   grid-template-rows: auto;
   padding: 10px;
   background-color: #f9f8fd;
 }
 .weather-container .date-and-time {
+  font-family: "Sriracha", cursive;
+  font-size: 1.5rem;
   grid-row: 1;
   grid-column: 1;
+  text-align: center;
 }
 .weather-container .weather-icon {
   display: inline;
@@ -181,9 +195,37 @@ button:focus {
 .weather-container .weather-temp div {
   display: inline;
 }
+.weather-container .weather-temp .temp {
+  font-size: 1.5rem;
+}
 .weather-container .weather-other {
   display: inline;
   grid-column: 3;
+}
+
+.hiking-tips {
+  display: grid;
+  width: 50%;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  padding: 10px;
+  background-color: #f9f8fd;
+  font-family: "Sriracha", cursive;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.hiking-tips .hiking-links {
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
