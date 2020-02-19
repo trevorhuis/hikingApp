@@ -2,59 +2,78 @@
     background-color: rgba($color: #000000, $alpha: 0.0);
 }
 
-.pull-down-container {
-    display: flex;
-    grid-row: 2;
-    grid-column:1;
+.weather-container, .hiking-tips-container {
     animation: 1.25s ease-out 0s 1 slideInFromTop;
     z-index: 1;
+    color: $dark-color;
+    width: 48%;
 }
 
 .weather-container {
-    display: grid;
-    width: 50%;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-row: 2;
+    grid-column:1;
     padding: 10px;
     background-color: $off-white;
+
+    .weather-data {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        display: grid;
     
-    .date-and-time {
-        font-family: $header-font;
-        font-size: 1.5rem;
-        grid-row: 1;
-        grid-column: 1;
-        text-align: center;
-    }
-
-    .weather-icon {
-        display: inline;
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .weather-temp {
-        display: inline-flex;
-        flex-direction: column;
-        grid-column: 2;
 
         div {
             display: inline;
         }
-
-        .temp {
+        
+        .date-and-time {
+            font-family: $header-font;
             font-size: 1.5rem;
+            grid-row: 1;
+            grid-column: 1 / span 3;
+            text-align: center;
         }
-    }
 
-    .weather-other {
-        display: inline;
-        grid-column: 3;
+        .weather-icon {
+            display: inline;
+            grid-column: 1;
+            grid-row: 2 / span 3;
+        }
+
+        .weather-temp {
+            grid-column: 2;
+            grid-row: 2;
+            font-size: 2.0rem;
+        }
+
+        .weather-min {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .weather-max {
+            grid-column: 2;
+            grid-row: 4;
+        }
+
+        .weather-humidity {
+            grid-column: 3;
+            grid-row: 3;
+        }
+
+        .weather-wind {
+            grid-column: 3;
+            grid-row: 4;
+        }
     }
 }
 
-.hiking-tips {
+.hiking-tips-container {
+    grid-row: 2;
+    grid-column: 1;
+    margin-left: auto;
+
+    .hiking-tips {
     display: grid;
-    width: 50%;
     grid-template-columns: auto;
     grid-template-rows: auto;
     padding: 10px;
@@ -63,11 +82,14 @@
     font-size: 1.5rem;
     text-align: center;
 
-    .hiking-links {
-        text-align: left;
-        font-size: 1.25rem;
+        .hiking-links {
+            text-align: left;
+            font-size: 1.25rem;
+        }
     }
 }
+
+
 
 @keyframes slideInFromTop {
     0% {
@@ -76,5 +98,20 @@
     100% {
       transform: translateY(0);
     }
-  }
+}
   
+@media (max-width: 775px) {
+    .pull-down-container {
+        flex-direction: column;
+    }
+
+    .weather-container, .hiking-tips {
+        width: 96%;
+    }
+
+    .hiking-tips-container {
+        grid-row: 4;
+        width: 100%;
+        animation: none;
+    }
+}

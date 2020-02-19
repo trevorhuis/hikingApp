@@ -36,7 +36,7 @@ button:focus {
   font-family: "Sriracha", cursive;
   color: #f9f8fd;
   display: flex;
-  grid-column: span 2;
+  grid-column: 1;
   grid-row: 1;
   background-color: #1873AA;
   z-index: 2;
@@ -56,6 +56,20 @@ button:focus {
   font-size: 1.1rem;
 }
 
+@media (max-width: 775px) {
+  .data-input {
+    flex-direction: column;
+  }
+
+  .site-title, .city-input {
+    flex: 0 0 100%;
+  }
+
+  .site-title {
+    margin-right: 20px;
+    margin-bottom: 0px;
+  }
+}
 .hike-container {
   grid-column: 1;
   grid-row: 3;
@@ -73,69 +87,96 @@ button:focus {
 .hike-data h1 {
   color: #002E6C;
   font-family: "Sriracha", cursive;
-  margin-bottom: 20px;
-}
-.hike-data .trail-title {
-  text-align: left;
-  width: 90%;
-  height: fit-content;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #002E6C;
-}
-.hike-data .trail-title a {
-  color: #002E6C;
+  margin-bottom: 80px;
 }
 .hike-data .trail {
   display: grid;
-  width: 90%;
-  margin: 5px;
-  grid-template-columns: 35% 65%;
-  grid-template-rows: auto;
-  border-radius: 10px;
-  font-family: "Lato", sans-serif;
-  border: 1px solid gray;
-  background-color: rgba(0, 0, 0, 0.15);
-}
-.hike-data .trail .trail-data {
-  display: grid;
+  width: 80%;
+  max-width: 790px;
+  padding: 10px;
   grid-template-columns: auto;
   grid-template-rows: auto;
   border-radius: 10px;
-  grid-column: 2;
-  margin-left: 20px;
+  background-color: #1873AA;
+  color: #f9f8fd;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 110px;
+  margin-left: 5%;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.hike-data .trail .trail-title {
+  text-align: left;
+  width: 90%;
+  height: fit-content;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: underline;
+  grid-row: 1;
+  grid-column: 2/span 3;
+  line-height: 1.7rem;
+}
+.hike-data .trail .trail-title a {
+  color: #f9f8fd;
+}
+.hike-data .trail .trail-title a:hover {
+  color: #aa1846;
 }
 .hike-data .trail .trail-image {
-  grid-row: 1;
+  grid-row: 1/span 3;
   grid-column: 1;
-  max-width: 250px;
-  height: 100%;
+  width: 225px;
+  height: 120px;
   display: flex;
   justify-content: center;
   align-self: center;
-  border-right: 1px solid gray;
-  background-color: #f9f8fd;
+  background-color: rgba(0, 0, 0, 0.01);
 }
 .hike-data .trail .trail-image img {
+  margin-left: -60px;
+  margin-top: -90px;
   max-width: 250px;
   max-height: 175px;
   align-self: center;
   border-radius: 5px;
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.hike-data .trail div {
+  text-align: left;
+  margin-left: 3px;
 }
 .hike-data .trail .trail-summary {
+  grid-row: 4;
+  grid-column: 1/span 4;
+  font-size: 1.2rem;
+}
+.hike-data .trail .trail-length.icon {
   grid-row: 2;
-  grid-column: 1;
-  font-size: 1.8rem;
+  grid-column: 2;
 }
 .hike-data .trail .trail-length {
   grid-row: 3;
-  grid-column: 1;
+  grid-column: 2;
 }
-.hike-data .trail .trail-stars, .hike-data .trail .trail-length, .hike-data .trail .difficulty {
-  line-height: 1.3rem;
+.hike-data .trail .trail-difficulty.icon {
+  grid-row: 2;
+  grid-column: 3;
 }
-.hike-data .trail .bold {
-  font-weight: 600;
+.hike-data .trail .trail-difficulty {
+  grid-row: 3;
+  grid-column: 3;
+}
+.hike-data .trail .trail-star.icon {
+  grid-row: 2;
+  grid-column: 4;
+}
+.hike-data .trail .trail-star {
+  grid-row: 3;
+  grid-column: 4;
+}
+.hike-data .trail .icon {
+  font-size: 1.3em;
 }
 
 .hike-data::-webkit-scrollbar-track {
@@ -155,57 +196,130 @@ button:focus {
   border-radius: 16px;
 }
 
+@media (max-width: 990px) {
+  .hike-data .trail {
+    width: 90%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 770px) {
+  .hike-data .trail .trail-title {
+    text-align: center;
+    grid-row: 2;
+    grid-column: 1/span 3;
+    width: 100%;
+  }
+  .hike-data .trail .trail-image {
+    grid-row: 1;
+    grid-column: 1/span 3;
+    width: 96%;
+    height: 120px;
+  }
+  .hike-data .trail .trail-image img {
+    margin-left: 0px;
+    margin-top: -90px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hike-data .trail div {
+    text-align: center;
+    margin: 5px;
+  }
+  .hike-data .trail .trail-summary {
+    grid-row: 5;
+    grid-column: 1/span 3;
+  }
+  .hike-data .trail .trail-length.icon {
+    grid-row: 3;
+    grid-column: 1;
+  }
+  .hike-data .trail .trail-length {
+    grid-row: 4;
+    grid-column: 1;
+  }
+  .hike-data .trail .trail-difficulty.icon {
+    grid-row: 3;
+    grid-column: 2;
+  }
+  .hike-data .trail .trail-difficulty {
+    grid-row: 4;
+    grid-column: 2;
+  }
+  .hike-data .trail .trail-star.icon {
+    grid-row: 3;
+    grid-column: 3;
+  }
+  .hike-data .trail .trail-star {
+    grid-row: 4;
+    grid-column: 3;
+  }
+}
 .weather-container--clear {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.pull-down-container {
-  display: flex;
-  grid-row: 2;
-  grid-column: 1;
+.weather-container, .hiking-tips-container {
   animation: 1.25s ease-out 0s 1 slideInFromTop;
   z-index: 1;
+  color: #002E6C;
+  width: 48%;
 }
 
 .weather-container {
-  display: grid;
-  width: 50%;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-row: 2;
+  grid-column: 1;
   padding: 10px;
   background-color: #f9f8fd;
 }
-.weather-container .date-and-time {
+.weather-container .weather-data {
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  display: grid;
+}
+.weather-container .weather-data div {
+  display: inline;
+}
+.weather-container .weather-data .date-and-time {
   font-family: "Sriracha", cursive;
   font-size: 1.5rem;
   grid-row: 1;
-  grid-column: 1;
+  grid-column: 1/span 3;
   text-align: center;
 }
-.weather-container .weather-icon {
+.weather-container .weather-data .weather-icon {
   display: inline;
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 2/span 3;
 }
-.weather-container .weather-temp {
-  display: inline-flex;
-  flex-direction: column;
+.weather-container .weather-data .weather-temp {
   grid-column: 2;
+  grid-row: 2;
+  font-size: 2rem;
 }
-.weather-container .weather-temp div {
-  display: inline;
+.weather-container .weather-data .weather-min {
+  grid-column: 2;
+  grid-row: 3;
 }
-.weather-container .weather-temp .temp {
-  font-size: 1.5rem;
+.weather-container .weather-data .weather-max {
+  grid-column: 2;
+  grid-row: 4;
 }
-.weather-container .weather-other {
-  display: inline;
+.weather-container .weather-data .weather-humidity {
   grid-column: 3;
+  grid-row: 3;
+}
+.weather-container .weather-data .weather-wind {
+  grid-column: 3;
+  grid-row: 4;
 }
 
-.hiking-tips {
+.hiking-tips-container {
+  grid-row: 2;
+  grid-column: 1;
+  margin-left: auto;
+}
+.hiking-tips-container .hiking-tips {
   display: grid;
-  width: 50%;
   grid-template-columns: auto;
   grid-template-rows: auto;
   padding: 10px;
@@ -214,7 +328,7 @@ button:focus {
   font-size: 1.5rem;
   text-align: center;
 }
-.hiking-tips .hiking-links {
+.hiking-tips-container .hiking-tips .hiking-links {
   text-align: left;
   font-size: 1.25rem;
 }
@@ -225,6 +339,21 @@ button:focus {
   }
   100% {
     transform: translateY(0);
+  }
+}
+@media (max-width: 775px) {
+  .pull-down-container {
+    flex-direction: column;
+  }
+
+  .weather-container, .hiking-tips {
+    width: 96%;
+  }
+
+  .hiking-tips-container {
+    grid-row: 4;
+    width: 100%;
+    animation: none;
   }
 }
 

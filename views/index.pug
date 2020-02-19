@@ -3,17 +3,23 @@ extends layout.pug
 block content
     // Variables
     mixin trail(name, summary, stars, ratings, hikeURL, length, trail_num, difficulty, imgUrl)
-        
         .trail
             .trail-image
                 if imgUrl === ""
                     img(src= "https://via.placeholder.com/250x175?text=No+Picture+Available")
                 else    
                     img(src= imgUrl)
-            .trail-data
-                .trail-title <a href=#{hikeURL}>#{name}</a>
-                .trail-length  Length: <span class="bold">#{length} Miles</span> &nbsp;|&nbsp; Difficulty: <span class="bold">#{difficulty}</span> &nbsp;|&nbsp; Rating: <span class="bold">#{stars}⭐ #{ratings} Votes</span>
-                .trail-summary #{summary}
+            .trail-title <a target="_blank" href=#{hikeURL}>#{name}</a>
+            //- .trail-data
+            .trail-length.icon <ion-icon name="walk"></ion-icon>
+            .trail-length #{length} Miles 
+            .trail-difficulty.icon <ion-icon name="stats-chart"></ion-icon>
+            .trail-difficulty #{difficulty}
+            .trail-star.icon <ion-icon name="star"></ion-icon> #{stars}
+            .trail-star #{ratings} Votes
+            // <span class="bold"></span> &nbsp;|&nbsp; Rating: <span class="bold">#{stars}⭐ #{ratings} Votes</span>
+            .trail-summary #{summary}
+            
 
 
     .container
@@ -26,27 +32,27 @@ block content
                     .input-group-append
                         button(class="btn btn-secondary" type="button" id="button-enter") Enter
         
-        .pull-down-container
-            .weather-container
-                .weather-data 
-                    .date-and-time
-                    .weather-icon
-                        img(src= `http://openweathermap.org/img/wn/${forecast.weatherIcon}@2x.png`)
-                    .weather-temp
-                        .temp #{forecast.temp}°
-                        .min Min: #{forecast.temp_min}°
-                        .max Max: #{forecast.temp_max}°
-                    .weather-other
-                        | Humidity: #{forecast.humidity}
+        .hiking-tips-container
             .hiking-tips Learn More About Hiking
                 .hiking-links
                     ul
                         li 
-                            a(href="https://www.rei.com/learn/expert-advice/hiking-for-beginners.html") Hiking 101
+                            a(href="https://www.rei.com/learn/expert-advice/hiking-for-beginners.html" target="_blank") Hiking 101
                         li 
-                            a(href="https://www.nps.gov/articles/hiking-safety.htm") Safety on the Trail
+                            a(href="https://www.nps.gov/articles/hiking-safety.htm" target="_blank") Safety on the Trail
                         li 
-                            a(href="https://www.rei.com/learn/expert-advice/hiking-training.html") How to train for a Hike
+                            a(href="https://www.rei.com/learn/expert-advice/hiking-training.html" target="_blank") How to train for a Hike
+
+        .weather-container
+            .weather-data 
+                .date-and-time
+                .weather-icon
+                    img(src= `http://openweathermap.org/img/wn/${forecast.weatherIcon}@2x.png`)
+                .weather-temp #{forecast.temp}°
+                .weather-min Min: #{forecast.temp_min}°
+                .weather-max Max: #{forecast.temp_max}°
+                .weather-wind Wind: #{forecast.wind}
+                .weather-humidity Humidity: #{forecast.humidity}
 
         .hike-container                
             .hike-data

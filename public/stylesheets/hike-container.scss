@@ -18,102 +18,228 @@
     h1 {
         color: $dark-color;
         font-family: $header-font;
-        margin-bottom: 20px;
-    }
-
-    .trail-title {
-        text-align: left;
-        width: 90%;
-        height: fit-content;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: $dark-color;
-
-        a {
-            color: $dark-color;
-        }
+        margin-bottom: 80px;
     }
 
     .trail {
         display: grid;
-        width: 90%;
-        margin: 5px;
-        grid-template-columns: 35% 65%;
+        width: 80%;
+        max-width: 790px;
+        padding: 10px;
+        grid-template-columns: auto;
         grid-template-rows: auto;
         border-radius: 10px;
+        background-color: $input-background;
+        color: $off-white;
         font-family: $body-font;
-        border: 1px solid gray;
-        background-color: rgba($color: #000000, $alpha: 0.15);
+        margin-bottom: 110px;
+        margin-left: 5%;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
+        .trail-title {
+            text-align: left;
+            width: 90%;
+            height: fit-content;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: underline;
+            grid-row: 1;
+            grid-column: 2 / span 3;
+            line-height: 1.7rem;
+    
+            a {
+                color: $off-white;
+            }
 
-        .trail-data {
-            display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: auto;
-            border-radius: 10px;
-            grid-column: 2;
-            margin-left: 20px;
-
+            a:hover {
+                color: $purple-text;
+            }
         }
+
+        // .trail-data {
+        //     display: grid;
+        //     grid-template-columns: auto;
+        //     grid-template-rows: auto;
+        //     border-radius: 10px;
+        //     grid-column: 2;
+        //     grid-row: 2;
+        //     padding-left: 5px;
+        //     color: $off-white;
+        // }
         
         .trail-image {
-            grid-row: 1;
+            grid-row: 1 / span 3;
             grid-column: 1;
-            max-width: 250px;
-            height: 100%;
+            width: 225px;
+            height: 120px;
             display: flex;
             justify-content: center;
             align-self: center;
-            border-right: 1px solid gray;
-            background-color: $off-white;
+            background-color: rgba(0,0,0, 0.01);
 
             img {
+                margin-left: -60px;
+                margin-top: -90px;
                 max-width: 250px;
                 max-height: 175px;
                 align-self: center;
                 border-radius: 5px;
+                box-shadow: 1px 4px 8px rgba(0, 0, 0, .5);
             }
         }
 
+        div {
+            text-align: left;
+            margin-left: 3px;
+        }
+
         .trail-summary {
+            grid-row: 4;
+            grid-column: 1 / span 4;
+            font-size: 1.2rem;
+        }
+
+        .trail-length.icon {
             grid-row: 2;
-            grid-column:1;
-            font-size: 1.8rem;
+            grid-column: 2;
         }
 
         .trail-length {
             grid-row: 3;
-            grid-column: 1;
+            grid-column: 2;
         }
 
-        .trail-stars, .trail-length, .difficulty {
-            line-height: 1.3rem;
+        .trail-difficulty.icon {
+            grid-row: 2;
+            grid-column: 3;
         }
 
-        .bold {
-            font-weight: 600;
+        .trail-difficulty {
+            grid-row: 3;
+            grid-column: 3;
         }
 
+        .trail-star.icon {
+            grid-row: 2;
+            grid-column: 4;
+        }
+
+        .trail-star {
+            grid-row: 3;
+            grid-column: 4;
+        }
+
+        .icon {
+            font-size: 1.3em;
+        }
 
     }
 }
 
-.hike-data::-webkit-scrollbar-track
-{
+// hr {
+//     border: 0;
+//     clear:both;
+//     display:block;
+//     width: 96%;                
+//     background-color:$dark-color;
+//     height: 2px;
+//     margin-top: 0px;
+//     margin-bottom: 0px;
+// }
+
+
+.hike-data::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
     border-radius: 16px;
 }
 
-.hike-data::-webkit-scrollbar
-{
+.hike-data::-webkit-scrollbar {
     width: 14px;
     background-color: #F5F5F5;
     border-radius: 16px;
 }
 
-.hike-data::-webkit-scrollbar-thumb
-{
+.hike-data::-webkit-scrollbar-thumb {
     background-color: $input-background;
     border-radius: 16px;
+}
+
+@media (max-width: 990px) {
+    .hike-data {
+        .trail {
+        width: 90%;
+        margin-left: 0;
+        }
+    }
+}
+
+@media (max-width: 770px) {
+    .hike-data {
+        .trail {
+
+            .trail-title {
+                text-align: center;
+                grid-row: 2;
+                grid-column: 1 / span 3;
+                width: 100%;
+            }
+            
+            .trail-image {
+                grid-row: 1;
+                grid-column: 1 / span 3;
+                width: 96%;
+                height: 120px;
+    
+                img {
+                    margin-left: 0px;
+                    margin-top: -90px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+    
+            div {
+                text-align: center;
+                margin: 5px;
+            }
+    
+            .trail-summary {
+                grid-row: 5;
+                grid-column: 1 / span 3;
+            }
+    
+            .trail-length.icon {
+                grid-row: 3;
+                grid-column: 1;
+            }
+    
+            .trail-length {
+                grid-row: 4;
+                grid-column: 1;
+            }
+    
+            .trail-difficulty.icon {
+                grid-row: 3;
+                grid-column: 2;
+            }
+    
+            .trail-difficulty {
+                grid-row: 4;
+                grid-column: 2;
+            }
+    
+            .trail-star.icon {
+                grid-row: 3;
+                grid-column: 3;
+            }
+    
+            .trail-star {
+                grid-row: 4;
+                grid-column: 3;
+            }
+        }
+    }
 }
