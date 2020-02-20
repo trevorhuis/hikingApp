@@ -13,7 +13,6 @@
     grid-row: 1;
     background-color: $input-background;
     z-index: 2;
-    
 }
 
 .city-input {
@@ -35,7 +34,6 @@
         flex-direction: column;
     }
 
-
     .site-title, .city-input {
         flex: 0 0 100%;
     }
@@ -44,7 +42,4 @@
         margin-right: 20px;
         margin-bottom: 0px;
     }
-
-
-    
 }

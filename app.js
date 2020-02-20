@@ -21,7 +21,7 @@ app.use(ignoreFavicon);
 
 app.get("/", (req, res) => {
 
-    res.render('index-blank');
+    res.render('intro-page');
 });
 
 app.get("/:city", (req, res) => {
@@ -31,7 +31,6 @@ app.get("/:city", (req, res) => {
         return APIcontroller.getHikingData(weatherData);
     })
     .then(data => {
-        // console.log(data);
         res.render('index', 
             {
                 forecast: data.forecast,
@@ -40,7 +39,7 @@ app.get("/:city", (req, res) => {
             });
     })
     .catch(function (err) {
-        console.log(err);
+        res.render('city-not-found');
     });
 });
 

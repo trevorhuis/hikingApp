@@ -23,13 +23,6 @@ body {
     justify-content: center;
 }
 
-.container--weather {
-    display: grid; 
-    grid-template-rows: auto;
-    grid-template-columns: auto;
-    justify-content: center;
-}
-
 input:focus,
 select:focus,
 textarea:focus,

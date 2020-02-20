@@ -13,13 +13,6 @@ body {
   justify-content: center;
 }
 
-.container--weather {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: auto;
-  justify-content: center;
-}
-
 input:focus,
 select:focus,
 textarea:focus,
@@ -256,6 +249,7 @@ button:focus {
 }
 .weather-container--clear {
   background-color: rgba(0, 0, 0, 0);
+  max-width: 790px;
 }
 
 .weather-container, .hiking-tips-container {

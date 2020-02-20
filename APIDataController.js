@@ -1,12 +1,6 @@
 const request = require('request-promise');
 
 let formatWeatherAPIresponseData = json => {
-
-    // let forecastData = formatForecastData(json.list.slice(1, 6), json.city.timezone)
-
-    // let forecasts = forecastData[0];
-    // let firstForecast = forecastData[1];
-
     let weatherData = {
         forecast: {
             temp: json.main.temp,
@@ -24,57 +18,6 @@ let formatWeatherAPIresponseData = json => {
 
     return weatherData;
 }
-
-// let formatForecastData = (json, timezone) => {
-//     let forecasts = [];
-
-//     let firstWeather = json.shift();
-
-//     let firstForecast = formatIndividualForecastData(firstWeather, timezone);
-
-//     for (item of json) {
-//         forecasts.push(formatIndividualForecastData(item, timezone));
-//     }
-
-//     return [forecasts, firstForecast];
-// }
-
-// let formatIndividualForecastData = (forecast, timezone) => {
-
-//     let rain = forecast.rain ? forecast.rain["3h"] : 0.00;
-//     let snow = forecast.snow ? forecast.snow["3h"] : 0.00;
-
-//     return {
-//         date: formatDate(forecast.dt + timezone),
-//         temp: forecast.main.temp,
-//         realFeel: forecast.main.feels_like,
-//         humidity: forecast.main.humidity,
-//         wind: forecast.wind.speed,
-//         rain: rain,
-//         snow: snow,
-//         main: forecast.weather[0].main,
-//         weatherIcon: forecast.weather[0].icon
-//     }    
-// }
-
-// let formatDate = UTCtime => {
-//     // Set the time adjusted for timezone
-//     let date = new Date(0);
-//     date.setUTCSeconds(UTCtime);
-
-//     let hour = date.getHours();
-
-//     if (hour > 12) {
-//         hour = `${hour - 12} PM`;
-//     } else {
-//         hour = `${hour} AM`;
-//     }
-
-//     return {
-//         day: `${date.getMonth()}/${date.getDate()}`,
-//         hour: hour
-//     }
-// }
 
 
 let formatCompleteData = (weatherData, hikingData) => {
@@ -106,11 +49,13 @@ const APIcontroller = {
             request(options)
             .then(function (response) {
                 let weatherData = formatWeatherAPIresponseData(response);
-                console.log(weatherData);
                 resolve(weatherData);
             })
             .catch(function (err) {
-                console.log(err);
+                reject({
+                    error: 404,
+                    reason: "City not found"
+                })
             });
         });
     },
